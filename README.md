@@ -1,2 +1,2 @@
-# Mehdi-Gohorbani
+# Mehdi-Ghorbani
 Hello I'm Mehdi Ghorbani M.sc of Industrial engineering in Urmia University
