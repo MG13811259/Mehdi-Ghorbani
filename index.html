@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رزومه - مهدی قربانی</title>
+  <style>
+    :root {
+      --primary: #1e3a5f;
+      --primary-light: #2c5282;
+      --accent: #3182ce;
+      --bg: #f7fafc;
+      --sidebar-bg: #1a365d;
+      --text: #2d3748;
+      --text-light: #718096;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --skill-bg: #edf2f7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, 'Vazirmatn', 'Tahoma', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: var(--white);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 1100px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: var(--sidebar-bg);
+      color: var(--white);
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #63b3ed);
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      color: white;
+      border: 4px solid rgba(255,255,255,0.2);
+      letter-spacing: -1px;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .title {
+      font-size: 14px;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(255,255,255,0.15);
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .contact-item .icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      opacity: 0.8;
+    }
+
+    .contact-item a {
+      color: var(--white);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills */
+    .skill {
+      margin-bottom: 14px;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .skill-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #63b3ed);
+      border-radius: 3px;
+    }
+
+    /* Languages */
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 13.5px;
+    }
+
+    .lang-level {
+      font-size: 12px;
+      opacity: 0.75;
+      background: rgba(255,255,255,0.1);
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+
+    /* Main Content */
+    .main {
+      padding: 40px 42px;
+    }
+
+    .main-section {
+      margin-bottom: 36px;
+    }
+
+    .main-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .main-title {
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-title::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .about-text {
+      color: var(--text-light);
+      font-size: 14.5px;
+      line-height: 1.8;
+    }
+
+    /* Experience & Education items */
+    .item {
+      margin-bottom: 22px;
+      position: relative;
+      padding-right: 18px;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--primary);
+    }
+
+    .item-company {
+      font-size: 13.5px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .item-date {
+      font-size: 12.5px;
+      color: var(--text-light);
+      background: var(--skill-bg);
+      padding: 3px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      font-size: 13.5px;
+      color: var(--text-light);
+      margin-top: 6px;
+    }
+
+    .item-desc ul {
+      padding-right: 18px;
+      margin-top: 6px;
+    }
+
+    .item-desc li {
+      margin-bottom: 4px;
+    }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 14.5px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      background: #ebf8ff;
+      color: var(--accent);
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+      }
+      .container {
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+      .project-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+        margin: 0;
+        border-radius: 0;
+      }
+      .sidebar {
+        padding: 30px 24px;
+      }
+      .main {
+        padding: 30px 24px;
+      }
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar">ع ر</div>
+        <h1 class="name">مهدی قربانی</h1>
+        <p class="title">توسعه‌دهنده فرانت‌اند</p>
+      </div>
+
+      <div>
+        <h2 class="section-title">اطلاعات تماس</h2>
+        <div class="contact-item">
+          <svg class="icon" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          <span>ali.rezaei@email.com</span>
+        </div>
+        <div class="contact-item">
+          <svg class="icon" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          <span>09933328962۷</span>
+        </div>
+        <div class="contact-item">
+          <svg class="icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+          <span>لنگرود، ایران</span>
+        </div>
+        <div class="contact-item">
+          <svg class="icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          <a href="https://github.com/username" target="_blank">github.com/username</a>
+        </div>
+        <div class="contact-item">
+          <svg class="icon" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+          <a href="https://linkedin.com/in/username" target="_blank">linkedin.com/in/username</a>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title">مهارت‌ها</h2>
+        <div class="skill">
+          <div class="skill-header">
+            <span>HTML / CSS</span>
+            <span>۹۵٪</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span>JavaScript</span>
+            <span>۹۰٪</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span>React</span>
+            <span>۸۵٪</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span>TypeScript</span>
+            <span>۸۰٪</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span>Next.js</span>
+            <span>۷۵٪</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span>Git & GitHub</span>
+            <span>۹۰٪</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title">زبان‌ها</h2>
+        <div class="lang-item">
+          <span>فارسی</span>
+          <span class="lang-level">بومی</span>
+        </div>
+        <div class="lang-item">
+          <span>انگلیسی</span>
+          <span class="lang-level">پیشرفته</span>
+        </div>
+        <div class="lang-item">
+          <span>آلمانی</span>
+          <span class="lang-level">متوسط</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <section class="main-section">
+        <h2 class="main-title">درباره من</h2>
+        <p class="about-text">
+          توسعه‌دهنده فرانت‌اند با بیش از ۴ سال تجربه در ساخت رابط‌های کاربری مدرن و کاربرپسند. علاقه‌مند به طراحی سیستم‌های مقیاس‌پذیر، بهینه‌سازی عملکرد و تجربه کاربری عالی. همیشه در حال یادگیری تکنولوژی‌های جدید هستم و از کار تیمی و حل مسائل پیچیده لذت می‌برم.
+        </p>
+      </section>
+
+      <section class="main-section">
+        <h2 class="main-title">سوابق شغلی</h2>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">توسعه‌دهنده ارشد فرانت‌اند</div>
+              <div class="item-company">شرکت فناوری نوآوران</div>
+            </div>
+            <span class="item-date">۱۴۰۲ — اکنون</span>
+          </div>
+          <div class="item-desc">
+            <ul>
+              <li>طراحی و پیاده‌سازی داشبوردهای پیچیده با React و TypeScript</li>
+              <li>بهبود عملکرد اپلیکیشن و کاهش زمان بارگذاری تا ۴۰٪</li>
+              <li>رهبری تیم ۳ نفره و mentorship توسعه‌دهندگان junior</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">توسعه‌دهنده فرانت‌اند</div>
+              <div class="item-company">استودیو دیجیتال پارس</div>
+            </div>
+            <span class="item-date">۱۴۰۰ — ۱۴۰۲</span>
+          </div>
+          <div class="item-desc">
+            <ul>
+              <li>ساخت بیش از ۱۵ وب‌سایت و اپلیکیشن با Next.js و Tailwind</li>
+              <li>همکاری نزدیک با تیم طراحی UI/UX برای پیاده‌سازی pixel-perfect</li>
+              <li>پیاده‌سازی سیستم‌های احراز هویت و مدیریت state با Zustand و React Query</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">کارآموز توسعه وب</div>
+              <div class="item-company">شرکت نرم‌افزاری آریا</div>
+            </div>
+            <span class="item-date">۱۳۹۹ — ۱۴۰۰</span>
+          </div>
+          <div class="item-desc">
+            <ul>
+              <li>آشنایی عملی با HTML، CSS، JavaScript و فریم‌ورک‌های مدرن</li>
+              <li>مشارکت در پروژه‌های واقعی و یادگیری بهترین روش‌های کدنویسی</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <h2 class="main-title">تحصیلات</h2>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">کارشناسی مهندسی کامپیوتر</div>
+              <div class="item-company">دانشگاه تهران</div>
+            </div>
+            <span class="item-date">۱۳۹۵ — ۱۳۹۹</span>
+          </div>
+          <div class="item-desc">
+            گرایش نرم‌افزار — معدل: ۱۷.۴۵
+          </div>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <h2 class="main-title">پروژه‌های منتخب</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-name">سیستم مدیریت فروشگاه آنلاین</div>
+            <div class="project-desc">پنل ادمین کامل با قابلیت مدیریت محصولات، سفارش‌ها و گزارش‌گیری پیشرفته</div>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-name">اپلیکیشن رزرو آنلاین</div>
+            <div class="project-desc">سیستم رزرو نوبت با تقویم تعاملی و اعلان‌های real-time</div>
+            <div class="tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">PWA</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
